@@ -1,0 +1,94 @@
+Rest API Documentation
+
+Title: To signup a new user
+URL: /signup
+Method: POST
+Body parameters: 
+{	
+userName=[String], 
+firstName=[String], lastName=[String], 
+password=[String], status=[String]
+}
+Return value:
+“1”		//for success
+“0”		//for existing username
+
+
+Title:To login into the app.
+URL: /login
+Method: POST
+Body parameters: 
+	{
+userName=[String],
+password=[String]
+	}
+Return value:
+{ 
+_id=[String], 
+userName=[String], firstName=[String],
+lastName=[String]
+}		//for success 
+“0”		//for login error
+Title: To get a list of all stands with description 
+URL: /getStands
+Method: GET
+Return value: 
+stands=
+{
+	_id=[String],
+	standName=[String], latitude=[String],
+longitude=[String], description=[String],
+		imageURL=[String], available=[String]
+}=[JSON array]
+
+
+Title: To check whether a username is taken or not
+URL: /checkUserName/<username>
+Method: GET
+Return value:
+“1”		//if exists
+“0”		//otherwise
+
+
+Title: To book a bike from a particular stand
+URL: /bookBike
+Method: POST
+Body parameters:
+{
+stand_id=[String],		//_id for stand
+user_id=[String]			//_id for user
+	}
+Return value:
+4 digit OTP=[String]		//for success
+“0”					//for failure
+“-1”					//if user has already booked
+Title: To check whether OTP exists or not
+URL: /checkOTP/<username>
+Method: GET
+Return value:
+4 digit OTP=[String]		//if OTP is valid
+“0”					//if OTP does not exist
+
+
+Title: To cancel an advance booking 
+URL: /cancelBooking/<username>
+Method: GET
+Return value:
+“1”		//for success
+
+
+Title: To return a bike to a particular stand
+URL: /returnBike/<user_id (_id)>/<stand name>
+Method: GET
+Return value:
+“1”		//for success
+
+
+Title: To lock a bike when at a stand
+URL: /returnBikeFromStand/<user_id (_id)>
+Method: GET
+Return value:
+“1”		//for success
+
+
+
